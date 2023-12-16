@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CFM This Week</title>
+  <style>
+    body {
+      margin: 0; /* Remove default margin */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* Hide any overflow */
+    }
+
+    #dynamic-image {
+      cursor: pointer;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <img id="dynamic-image" src="https://deseret.brightspotcdn.com/dims4/default/d70cb84/2147483647/strip/true/crop/4080x3072+0+0/resize/2000x1506!/quality/90/?url=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2FnMOj0TEItZc-Ylv0pdwBe4EEkIk%3D%2F0x0%3A4080x3072%2F4080x3072%2Ffilters%3Afocal%281648x1648%3A1649x1649%29%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_asset%2Ffile%2F25158931%2FPXL_20231208_202706697.jpg" alt="Dynamic Image" />
+
+  <script>
+    var startDate = new Date("2023-12-25"); // Start date for the URL formula
+
+    // Function to generate the dynamic URL based on the formula
+    function generateDynamicURL() {
+      var now = new Date();
+      var weeksBetween = Math.floor((now - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
+      var formattedWeeksBetween = String(weeksBetween).padStart(2, '0');
+      var dynamicURL = "https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-book-of-mormon-2024/" + formattedWeeksBetween + "?lang=eng"
+      return dynamicURL;
+    }
+
+    // Get the dynamic image element
+    var dynamicImage = document.getElementById("dynamic-image");
+
+    // Add a click event listener to the dynamic image
+    dynamicImage.addEventListener("click", function() {
+      var dynamicURL = generateDynamicURL();
+      window.open(dynamicURL, "_blank");
+    });
+  </script>
+</body>
+</html>
